@@ -27,17 +27,7 @@ namespace Aplicacao.Aplicacao
             }
         }
 
-        //public Produto ConverteEntidade(ProdutoDtoRequestApi produtoApi)
-        //{
-        //    Produto produto = new Produto();
-
-        //    produto.Descricao = produtoApi.Descricao;
-        //    produto.PrecoVenda = produtoApi.PrecoVenda;
-        //    produto.Situacao = produtoApi.Situacao;
-
-        //    return produto;
-
-        //}
+ 
 
 
         public Produto Alterar(Produto produto)
