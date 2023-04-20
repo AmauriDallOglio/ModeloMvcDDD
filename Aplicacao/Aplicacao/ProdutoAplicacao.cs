@@ -82,7 +82,6 @@ namespace Aplicacao.Aplicacao
         {
             try
             {
-               // short tipo = (short)situacao;
                 List<Produto> listadeProdutoPorCategoria = iProduto.ListarProdutosPelaSituacao(situacao);
                 if (listadeProdutoPorCategoria.Count == 0)
                     throw new NotImplementedException($"não existe produtos com esta situação!");
