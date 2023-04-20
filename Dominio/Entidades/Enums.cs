@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace Dominio.Entidades
 {
-    internal class Enums
+    public class Enums
     {
         public enum SituacaoEnum
         {

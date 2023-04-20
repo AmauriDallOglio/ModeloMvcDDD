@@ -18,7 +18,7 @@ namespace Infra.Repositorio
 
         public Produto Incluir(Produto produto)
         {
-            produto.IdentificaQuandoFoiGerado();
+            produto.IdentificaQuandoForGerado();
             _context.Produtos.Add(produto);
             _context.SaveChanges();
             return produto;
@@ -26,7 +26,7 @@ namespace Infra.Repositorio
 
         public Produto Alterar(Produto produto)
         {
-            produto.IdentificaQuandoFoiAlterado();
+            produto.IdentificaQuandoForAlterado();
             _context.Produtos.Add(produto);
             _context.SaveChanges();
             return produto;

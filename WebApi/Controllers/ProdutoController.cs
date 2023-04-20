@@ -1,8 +1,8 @@
 ﻿using Aplicacao.Aplicacao;
-using Aplicacao.Dto;
 using Dominio.Entidades;
 using Dominio.Interface;
 using Microsoft.AspNetCore.Mvc;
+using static Dominio.Entidades.Enums;
 
 namespace WebApi.Controllers
 {

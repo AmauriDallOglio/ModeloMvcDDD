@@ -1,7 +1,5 @@
-﻿using Aplicacao.Dto;
-using Dominio.Entidades;
+﻿using Dominio.Entidades;
 using Dominio.Interface;
-using Infra.Context;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Aplicacao.Aplicacao
