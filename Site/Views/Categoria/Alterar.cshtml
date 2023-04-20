@@ -1,0 +1,49 @@
+﻿@using Dominio
+@model Dominio.Entidades.Categoria
+@{
+    ViewData["Title"] = "Alterar";
+}
+
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+<div class="text-center">
+    <h1 class="display-4"> Alterando a categoria </h1>
+</div>
+
+<form asp-controller="Categoria" asp-action="Alterar" method="post">
+
+    @* <input type="hidden" asp-for="id" />*@
+
+    <div class="mb-3">
+        <label for="descricao" class="form-label"> Descrição: </label>
+        <input type="text" asp-for="Descricao" class="form-control" aria-describedby="Digite a descrição">
+        <div id="descricao" class="form-text">*Campo obrigatório</div>
+        @Html.ValidationMessageFor(a => a.Descricao)
+    </div>
+
+        <div class="mb-3">
+        <label for="dataCadastro" class="form-label"> Data de cadastro: </label>
+        <input type="datetime" asp-for="DataCadastro" class="form-control" aria-describedby="Digite a data">
+        <div id="dataCadastro" class="form-text">*Campo obrigatório</div>
+        @Html.ValidationMessageFor(a => a.DataCadastro)
+    </div>
+
+        <div class="mb-3">
+        <label for="situacao" class="form-label"> Situação: </label>
+        <input type="text" asp-for="Situacao" class="form-control" aria-describedby="Digite a situação">
+        <div id="situacao" class="form-text">*Campo obrigatório</div>
+        @Html.ValidationMessageFor(a => a.Situacao)
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Gravar</button>
+    <a class="btn btn-secondary" asp-controller="Categoria" asp-action="Index" role="button"> Voltar</a>
+</form>

@@ -1,0 +1,74 @@
+﻿@using Dominio
+@model List<Dominio.Entidades.Categoria>
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+
+
+
+
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Categoria" asp-action="Incluir"> Incluir </a>
+    </div>
+
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <br />
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+
+    <br />
+
+
+
+    <h1 class="display-4"> Categorias </h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Descrição</th>
+                @*<th scope="col">Situação</th>*@
+                <th scope="col">   </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row"> @item.Id </th>
+                        <th scope="row"> @item.Descricao </th>
+                        @*<th scope="row"> @item.Situacao </th>*@
+                        <td>
+                            <a class="btn btn-primary" asp-route-id="@item.Id" asp-controller="Categoria" asp-action="Alterar" asp-route-id="@item.Id">Alterar</a> |
+                            <a class="btn btn-secondary" asp-route-id="@item.Id" asp-controller="Categoria" asp-action="Consultar" asp-route-id="@item.Id">Detalhes</a> |
+                            <a class="btn btn-danger" asp-route-id="@item.Id" asp-controller="Categoria" asp-action="Apagar" asp-route-id="@item.Id">Apagar</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>

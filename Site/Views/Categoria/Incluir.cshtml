@@ -1,0 +1,38 @@
+﻿@using Dominio
+@model Dominio.Entidades.Categoria
+@{
+    ViewData["Title"] = "Criar uma nova categoria";
+}
+
+
+@*    @if (TempData["MensagemErro"] != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemErro"]
+        </div>
+    }*@
+
+
+<div class="text-center">
+    <h1 class="display-4"> Cadastrar categoria </h1>
+</div>
+
+<form asp-controller="Categoria" asp-action="Incluir" method="post">
+
+
+    <div class="form-group">
+        <label for="descricao" class="form-label"> Descrição: </label>
+        <input type="text" asp-for="Descricao" class="form-control" aria-describedby="Digite a descrição">
+        <div class="form-text">*Campo obrigatório</div>
+        @Html.ValidationMessageFor(a => a.Descricao)
+    </div>
+
+ 
+
+    <button type="submit" class="btn btn-primary">Gravar</button>
+    <a class="btn btn-secondary" asp-controller="Categoria" asp-action="Index" role="button"> Voltar</a>
+</form>
+
+

@@ -1,0 +1,26 @@
+﻿@using Dominio
+@model Dominio.Entidades.Categoria
+@{
+    ViewData["Title"] = "Apagar";
+}
+
+<div class="text-center">
+    <h1 class="display-4"> Deseja apagar a categoria? </h1>
+</div>
+
+<form asp-controller="Categoria" asp-action="Apagar" method="post">
+
+    <div class="mb-3">
+        <label for="id" class="form-label"> Código: </label>
+        <input type="text" asp-for="Id" class="form-control" disabled="disabled" />
+    </div>
+
+
+    <div class="mb-3">
+        <label for="descricao" class="form-label"> Descrição: </label>
+        <input type="text" asp-for="Descricao" class="form-control" disabled="disabled">
+    </div>
+
+    <button type="submit" class="btn btn-danger"> Confirmar </button>
+    <a class="btn btn-secondary" asp-controller="Categoria" asp-action="Index" role="button">Voltar</a>
+</form>
