@@ -1,10 +1,7 @@
 ﻿using Dominio.Entidades;
 using Dominio.Interface;
 using Infra.Context;
-using Microsoft.IdentityModel.Protocols;
 using Microsoft.IdentityModel.Tokens;
-using System.Xml;
-using static Dominio.Entidades.Produto;
 
 namespace Infra.Repositorio
 {
