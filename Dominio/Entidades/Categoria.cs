@@ -7,7 +7,7 @@ namespace Dominio.Entidades
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Digite a descrição da categoria!")]
         [MaxLength(50)]
         public string Descricao { get; set; } = string.Empty;
         [Required]
@@ -18,9 +18,8 @@ namespace Dominio.Entidades
         [Required]
         [JsonIgnore]
         public DateTime DataAlteracao { get; set; }
-
-        //[JsonIgnore]
-        //public ICollection<Produto>? Produtos { get; set; }
+        [JsonIgnore]
+        public virtual List<Produto>? Produtos { get; set; }
 
 
         public void CarregaDadosNoIncluir()

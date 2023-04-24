@@ -8,9 +8,6 @@ namespace Dominio.Entidades
     {
         [Key]
         public int Id { get; set; }
-        //[Required]
-        //[MaxLength(100)]
-        //public string Nome { get; set; } = string.Empty;
         [Required]
         [MaxLength(100)]
         [Display(Name = "Descrição é obrigatório")]
@@ -30,7 +27,7 @@ namespace Dominio.Entidades
         [DataType(DataType.Date)]
         public DateTime DataAlteracao { get; set; }
 
-        public int CategoriaId { get; set; }
+        public int? CategoriaId { get; set; }
         public Categoria? Categoria { get; set; }
 
 
@@ -44,7 +41,7 @@ namespace Dominio.Entidades
 
         public void IdentificaQuandoForAlterado()
         {
-            DataCadastro = DateTime.Now;
+            DataAlteracao = DateTime.Now;
         }
 
 

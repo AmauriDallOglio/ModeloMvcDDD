@@ -1,18 +1,19 @@
-﻿@using Dominio
+﻿@using Dominio;
+@using static Dominio.Enums.Enums.PerfilEnum;
 @model Dominio.Entidades.Categoria
 @{
     ViewData["Title"] = "Criar uma nova categoria";
 }
 
 
-@*    @if (TempData["MensagemErro"] != null)
+    @if (TempData["MensagemErro"] != null)
     {
         <br />
         <div class="alert alert-danger" role="alert">
             <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
             @TempData["MensagemErro"]
         </div>
-    }*@
+    }
 
 
 <div class="text-center">
@@ -29,7 +30,20 @@
         @Html.ValidationMessageFor(a => a.Descricao)
     </div>
 
+
+    <div class="form-group">
+        <label for="situacao" class="form-label"> Situação: </label>
  
+        <select asp-for="Situacao" class="form-control">
+             <option value="9">Todos</option>
+            <option value="0" selected>Ativo</option>
+            <option value="1">Inativo</option> 
+@*            <option value="9"> Selecione </option>
+            <option value="@Dominio.Enums.Enums.PerfilEnum.Ativo" selected> Ativo </option>
+            <option value="@Dominio.Enums.Enums.PerfilEnum.Inativo"> Inativo </option>*@
+        </select>
+    </div>
+
 
     <button type="submit" class="btn btn-primary">Gravar</button>
     <a class="btn btn-secondary" asp-controller="Categoria" asp-action="Index" role="button"> Voltar</a>

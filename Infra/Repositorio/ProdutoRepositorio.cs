@@ -45,7 +45,7 @@ namespace Infra.Repositorio
                     categoriaBanco = _context.Categorias.Where(a => a.Descricao == produto.Categoria.Descricao).FirstOrDefault();
                 }
             }
-            if (categoriaBanco.Id != 0)
+            if (categoriaBanco != null)
             {
                 produto.Categoria = categoriaBanco;
             }

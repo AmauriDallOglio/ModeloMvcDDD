@@ -2,7 +2,7 @@
 using Dominio.Entidades;
 using Dominio.Interface;
 using Microsoft.AspNetCore.Mvc;
-using static Dominio.Entidades.Enums;
+using static Dominio.Enums.Enums;
 
 namespace WebApi.Controllers
 {

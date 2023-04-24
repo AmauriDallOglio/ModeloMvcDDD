@@ -1,4 +1,6 @@
-﻿using Dominio.Entidades;
+﻿using Aplicacao.DTO;
+using Aplicacao.Servicos;
+using Dominio.Entidades;
 using Dominio.Interface;
 using Microsoft.IdentityModel.Tokens;
 
@@ -6,11 +8,20 @@ namespace Aplicacao.Aplicacao
 {
     public class CategoriaAplicacao
     {
+        private readonly IProdutoRepositorio iProduto;
         private readonly ICategoriaRepositorio iCategoria;
-        public CategoriaAplicacao(ICategoriaRepositorio iCategoriaRepositorio)
+
+
+
+        public CategoriaAplicacao(ICategoriaRepositorio iCategoriaRepositorio, IProdutoRepositorio iProdutoRepositorio)
         {
+            iProduto = iProdutoRepositorio;
             iCategoria = iCategoriaRepositorio;
+
+    
         }
+
+
 
         public List<Categoria> RetornaTodos()
         {
@@ -59,7 +70,7 @@ namespace Aplicacao.Aplicacao
         {
             try
             {
-                ValidadorIncluir(categoria);
+                //ValidadorIncluir(categoria);
                 Categoria resultado = iCategoria.Incluir(categoria);
                 return resultado;
             }
@@ -69,11 +80,11 @@ namespace Aplicacao.Aplicacao
             }
         }
 
-        public void ValidadorIncluir(Categoria categoria)
-        {
-            if (categoria.Descricao.IsNullOrEmpty())
-                throw new NotImplementedException("Descrição não pode estar em branco!");
-        }
+        //public void ValidadorIncluir(Categoria categoria)
+        //{
+        //    if (categoria.Descricao.IsNullOrEmpty())
+        //        throw new NotImplementedException("Descrição não pode estar em branco!");
+        //}
 
         public Categoria Alterar(Categoria categoria)
         {

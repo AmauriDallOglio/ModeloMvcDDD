@@ -8,17 +8,25 @@ namespace Site.Controllers
     public class CategoriaController : Controller
     {
         private readonly ICategoriaRepositorio iRepositorioCategoria;
+        private readonly IProdutoRepositorio iRepositorioProduto;
         private readonly CategoriaAplicacao aplicacaoCategoria;
-        public CategoriaController(ICategoriaRepositorio iCategoriaRepositorio)
+ 
+        public CategoriaController(ICategoriaRepositorio iCategoriaRepositorio, IProdutoRepositorio iProdutoRepositorio )
         {
             iRepositorioCategoria = iCategoriaRepositorio;
-            aplicacaoCategoria = new CategoriaAplicacao(iRepositorioCategoria);
+            iRepositorioProduto = iProdutoRepositorio;
+ 
+            aplicacaoCategoria = new CategoriaAplicacao(iRepositorioCategoria, iRepositorioProduto );
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             try
             {
+                TesteServico serrr = new TesteServico(iRepositorioCategoria, iRepositorioProduto);
+                var okk = serrr.Testando();
+
+
                 List<Categoria> resultado = aplicacaoCategoria.RetornaTodos();
                 return View(resultado);
             }
@@ -27,6 +35,13 @@ namespace Site.Controllers
                 TempData["MensagemErro"] = $"Atenção: {erro.Message}";
                 return RedirectToAction("Index");
             }
+        }
+
+
+        public IActionResult Grid()
+        {
+            List<Categoria> resultado = aplicacaoCategoria.RetornaTodos();
+            return PartialView("Grid", resultado);
         }
 
         [HttpGet]
@@ -40,6 +55,11 @@ namespace Site.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(categoria);
+                }
+
                 aplicacaoCategoria.Incluir(categoria);
                 TempData["MensagemSucesso"] = "Categoria cadastrada com sucesso";
                 return RedirectToAction("Index");
@@ -50,6 +70,8 @@ namespace Site.Controllers
                 return RedirectToAction("Incluir");
             }
         }
+
+
 
         [HttpGet]
         public IActionResult Alterar(int id)
@@ -63,6 +85,11 @@ namespace Site.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(categoria);
+                }
+
                 aplicacaoCategoria.Alterar(categoria);
                 TempData["MensagemSucesso"] = "Categoria alterada com sucesso";
                 return RedirectToAction("Index");

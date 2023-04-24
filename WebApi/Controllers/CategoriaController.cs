@@ -14,7 +14,7 @@ namespace WebApi.Controllers
         public CategoriaController(ICategoriaRepositorio iCategoriaRepositorio)
         {
             iRepositorioCategoria = iCategoriaRepositorio;
-            aplicacaoCategoria = new CategoriaAplicacao(iRepositorioCategoria);
+            aplicacaoCategoria = new CategoriaAplicacao(iRepositorioCategoria, null);
         }
 
         [HttpPost("Incluir")]
@@ -30,6 +30,30 @@ namespace WebApi.Controllers
                 return NotFound("Erro:" + erro.Message);
             }
         }
+
+        [HttpPost("Incluir10Registros")]
+        public IActionResult Incluir10Registros(Categoria categoria)
+        {
+            try
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Categoria nova = new Categoria();
+               
+
+                    string tipo = "inserindo api filho " + Convert.ToString(i);
+                    nova.Descricao = tipo;
+                    Categoria resultado =  aplicacaoCategoria.Incluir(nova);
+                }
+ 
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return NotFound("Erro:" + erro.Message);
+            }
+        }
+
 
         [HttpPut("Alterar")]
         public IActionResult Alterar(int id, Categoria categoria)
@@ -75,6 +99,8 @@ namespace WebApi.Controllers
                 return NotFound("Erro:" + erro.Message);
             }
         }
+
+
 
 
 

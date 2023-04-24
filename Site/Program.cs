@@ -13,6 +13,8 @@ builder.Services.AddSqlServer<MeuContext>(builder.Configuration.GetConnectionStr
 //builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+
 
 var app = builder.Build();
 
