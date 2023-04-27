@@ -2,6 +2,7 @@
 using Dominio.Entidades;
 using Dominio.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using static Dominio.Enums.Enums;
 
 namespace WebApi.Controllers
@@ -56,6 +57,16 @@ namespace WebApi.Controllers
             try
             {
                 List<Produto> listaDeProdutos = aplicacaoProduto.ListarProdutosPorCategoriaPeloNome(nome);
+                if (listaDeProdutos is null)
+                {
+                    return BadRequest(new
+                    {
+                        msg = "Conteúdo inexistente, solicitaão inválida",
+                        status = HttpStatusCode.BadRequest
+
+                    });
+                }
+
                 return Ok(listaDeProdutos); ; //CreatedAtAction(nameof(ObterPorId), new { id = resultado.Id }, resultado);
             }
             catch (Exception erro)
