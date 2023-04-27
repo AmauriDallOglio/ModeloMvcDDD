@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Dominio.Helper;
+using System.ComponentModel.DataAnnotations;
 using static Dominio.Enums.Enums;
 
 namespace Dominio.Entidades
@@ -45,6 +46,22 @@ namespace Dominio.Entidades
         }
 
 
+        public void SetSenhaHash()
+        {
+            Senha = Senha.GerarHash();
+        }
+
+        public void SetNovaSenha(string novaSenha)
+        {
+            Senha = novaSenha.GerarHash();
+        }
+
+        public string GerarNovaSenha()
+        {
+            string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
+            Senha = novaSenha.GerarHash();
+            return novaSenha;
+        }
 
     }
 }

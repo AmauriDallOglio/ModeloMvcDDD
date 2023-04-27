@@ -11,6 +11,12 @@ namespace Infra.Mapeamento
         {
             builder.HasKey(x => x.Id).HasName("Id");
             builder.Property(x => x.Descricao).HasColumnName("Descricao").HasMaxLength(100).HasColumnType("varchar").IsRequired();
+            //builder.Property(x => x.Descricao).HasColumnName("Descricao").HasColumnType("varchar").HasMaxLength(100).IsRequired();
+            //builder.Property(x => x.PrecoVenda).HasColumnName("PrecoVenda").HasColumnType("Money").IsRequired();
+            //builder.Property(x => x.Situacao).HasColumnName("Situacao").HasColumnType("short").IsRequired();
+            //builder.Property(x => x.DataCadastro).HasColumnName("DataCadastro").HasColumnType("DateTime").IsRequired();
+            //builder.Property(x => x.DataAlteracao).HasColumnName("DataAlteracao").HasColumnType("DateTime").IsRequired();
+
             builder.HasOne(x => x.Categoria);
 
             //builder.HasKey(t => t.Categoria);

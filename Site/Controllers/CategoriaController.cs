@@ -1,10 +1,12 @@
 ﻿using Aplicacao.Aplicacao;
+using Aplicacao.Filtro;
 using Dominio.Entidades;
 using Dominio.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Site.Controllers
 {
+    [AcessoUsuarioLogado]
     public class CategoriaController : Controller
     {
         private readonly ICategoriaRepositorio iRepositorioCategoria;

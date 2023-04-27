@@ -10,8 +10,11 @@ namespace Dominio.Interface
 
         List<Usuario> ListarTodos();
 
+        Usuario BuscarPorLogin(string login);
+        Usuario BuscarPorId(int id);
         //List<Produto> ListarProdutosPelaDescricao(string descricao);
         //List<Produto> ListarProdutosPelaSituacao(bool tipo);
 
+        Usuario BuscarPorEmailELogin(string email, string login);
     }
 }

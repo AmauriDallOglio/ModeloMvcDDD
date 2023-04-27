@@ -1,3 +1,5 @@
+using Aplicacao.Aplicacao;
+using Aplicacao.Interface;
 using Dominio.Interface;
 using Infra.Context;
 using Infra.Repositorio;
@@ -10,10 +12,22 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddSqlServer<MeuContext>(builder.Configuration.GetConnectionString("ConexaoPadrao"));
 
-//builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<ISessaoAplicacao, SessaoAplicacao>();
+builder.Services.AddScoped<ILoginAplicacao, LoginAplicacao>();
+builder.Services.AddSession(o =>
+{
+    o.Cookie.HttpOnly = true;
+    o.Cookie.IsEssential = true;
+});
+
 
 
 var app = builder.Build();
@@ -28,13 +42,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();
