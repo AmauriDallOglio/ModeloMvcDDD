@@ -27,4 +27,6 @@ namespace Aplicacao.DTO
         public DateTime DataAlteracao { get; set; }
         public virtual List<Produto>? Produtos { get; set; }
     }
+
+
 }
