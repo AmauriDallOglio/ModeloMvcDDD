@@ -36,6 +36,7 @@ namespace Site.Controllers
         [HttpPost]
         public IActionResult Incluir(Usuario usuario)
         {
+       
             try
             {
                 if (!ModelState.IsValid)

@@ -38,6 +38,8 @@ namespace Site.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var aaaa = _iUsuarioRepositorio.ListarTodos();
+
                     Usuario usuario = _iUsuarioRepositorio.BuscarPorLogin(dto.Login);
 
                     if (usuario != null)
